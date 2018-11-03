@@ -13,6 +13,10 @@ public class FiksniBroj extends TelefonskiBroj {
         String s=new String(grad.pozivni + "/" + broj);
         return s;
     }
+    @Override
+    public int hashCode(){
+        return 34;
+    }
     public enum Grad{ //promjenljive pobrojanog tipa;
         TRAVNIK("030"),
         ORAŠJE("031"),
