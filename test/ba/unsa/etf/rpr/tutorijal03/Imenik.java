@@ -1,6 +1,8 @@
 package ba.unsa.etf.rpr.tutorijal03;
 
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 /*
 Klasa Imenik omogućuje da se pretražuju brojevi koristeći klasu HashMap. Ova klasa treba sadržavati sljedeće javne metode:
@@ -17,17 +19,35 @@ Set<TelefonskiBroj> izGradaBrojevi(Grad g) - vraća brojeve za osobe iz grada g.
 
  */
 public class Imenik {
-    private HashMap imenik=new HashMap();
+    private HashMap imenikKeyString=new HashMap();
+    private HashMap imenikKeyTelefonskiBroj=new HashMap();
 
     public void dodaj(String ime, TelefonskiBroj broj){
-        this.imenik.put(ime,broj);
+        this.imenikKeyString.put(ime,broj);
+        this.imenikKeyTelefonskiBroj.put(broj,ime);
     }
     public String dajBroj(String ime){
-        TelefonskiBroj broj=(TelefonskiBroj) this.imenik.get(ime);
+        TelefonskiBroj broj=(TelefonskiBroj) this.imenikKeyString.get(ime);
         return broj.ispisi();
+    }
+    public String dajIme(TelefonskiBroj broj){
+        String ime=(String) this.imenikKeyTelefonskiBroj.get(broj);
+        return ime;
+        }
+     public String naSlovo(char s){
+         Set skup=this.imenikKeyString.keySet(); //pravi skup ciji su elementi imena(key) tipa OBJECT !!!! ;
+         String popis="";
+         int i=1;
+         for(Object imence : skup){ //prolazimo rangovskom kroz skup
+             String ime=(String)imence; // da bi koristili metodu "charAt()" konverziju radimo;
+             if (ime.charAt(0)==s){
+                 popis=popis +  i + ". " + imence + " - " + this.dajBroj(ime);
+             }
+             i++;
+         }
+         return popis;
     }
 
 
 
-    
 }
