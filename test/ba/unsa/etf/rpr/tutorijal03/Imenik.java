@@ -3,6 +3,7 @@ package ba.unsa.etf.rpr.tutorijal03;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.TreeSet;
 
 /*
 Klasa Imenik omogućuje da se pretražuju brojevi koristeći klasu HashMap. Ova klasa treba sadržavati sljedeće javne metode:
@@ -46,6 +47,18 @@ public class Imenik {
              i++;
          }
          return popis;
+    }
+    public Set<String>izGrada(FiksniBroj.Grad g){
+        Set skup=this.imenikKeyTelefonskiBroj.keySet();//pravimo skup koji sadrzi objekte tipa Telefonski broj;
+        TreeSet<String> likoviIzGrada=new TreeSet<String>(); //TreeSet u koji smjestamo odgovarajuca imena i prezimena koja su sortirana po default-u
+        for(Object broj : skup){ //prolazimo rangovskom for petljom kroz skup
+            if(broj instanceof FiksniBroj){ //ako je odg. Object instanca klase FiksniBroj i ako je grad tog broja jednak parametru g onda dodajemo u skup odg string koji je ime i prezime ;
+                if(g.equals(((FiksniBroj) broj).getGrad())){
+                    likoviIzGrada.add(this.dajIme((TelefonskiBroj)broj));
+                }
+            }
+        }
+        return likoviIzGrada;
     }
 
 

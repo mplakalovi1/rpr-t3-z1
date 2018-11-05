@@ -17,6 +17,11 @@ public class FiksniBroj extends TelefonskiBroj {
     public int hashCode(){
         return 34;
     }
+
+    public Grad getGrad() {
+        return grad;
+    }
+
     public enum Grad{ //promjenljive pobrojanog tipa;
         TRAVNIK("030"),
         ORAŠJE("031"),
