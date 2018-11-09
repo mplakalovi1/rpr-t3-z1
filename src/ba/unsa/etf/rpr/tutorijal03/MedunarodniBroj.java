@@ -10,13 +10,12 @@ public class MedunarodniBroj extends TelefonskiBroj {
     }
 
     @Override
-    public String ispisi() {
-        String s = new String(drzava + "/" + broj);
-        return s;
+    public final String ispisi() {
+        return new String(drzava + "/" + broj);
     }
 
     @Override
-    public int hashCode() {
+    public final int hashCode() {
         return 3444;
     }
 }

@@ -10,22 +10,21 @@ public class FiksniBroj extends TelefonskiBroj implements Comparable<TelefonskiB
     }
 
     @Override
-    public int compareTo(TelefonskiBroj broj) {
+    public final int compareTo(TelefonskiBroj broj) {
         return this.ispisi().compareTo(broj.ispisi());
     }
 
     @Override
-    public String ispisi() {
-        String s = new String(grad.pozivni + "/" + broj);
-        return s;
+    public final String ispisi() {
+         return (grad.pozivni + "/" + broj);
     }
 
     @Override
-    public int hashCode() {
+    public final int hashCode() {
         return 34;
     }
 
-    public Grad getGrad() {
+    public final Grad getGrad() {
         return grad;
     }
 
